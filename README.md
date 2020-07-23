@@ -1,1 +1,1 @@
-# git_commands
+# This project decribes list of git commands
