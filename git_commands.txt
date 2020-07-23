@@ -1,0 +1,116 @@
+					          PUSH EXISTING PROJECT INTO GIT
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin <project url>
+git push -f origin master
+
+					          HOW TO CREATE NEW PRIVATE BRANCH FOR DEVELOPMENT
+
+Sync local environment with git repository structure
+git fetch
+
+Switch to branch dev					
+git checkout dev
+
+Get latest changes from dev
+git pull --rebase origin dev
+
+Create and switch to private branch
+git checkout -b  <my_private_branch_name>
+	
+git checkout <my_private_branch_name>
+
+git rebase dev
+
+git commit -am "commit description"
+
+Push changes to remote repository
+git push -u origin <my_private_branch_name>
+
+git push -f origin <my_private_branch_name>
+
+									HOW TO RESOLVE MERGE REQUEST CONFLICTS
+			
+git checkout dev
+
+git pull --rebase origin dev
+
+git checkout <my_private_branch_name>
+
+Rebase private branch on top of dev latest changes 
+(reapply your work on top of the incoming changes)
+
+git rebase dev
+
+Resolve conflicts manually in conflicted files with IDE
+
+git add .
+
+git rebase --continue
+
+git commit -m "conflicts was resolved"
+
+git push -f origin <my_private_branch_name>
+
+If you would like to remove local branches which are already removed on remote execute
+git fetch --prune
+
+									GIT FETCH NEW REMOTE BRANCH
+Fetch new remote branch
+git checkout --track origin/<remote_branch_name>
+
+
+									RENAMING BRANCH
+To rename the current local branch
+git branch -m <newname>
+
+To rename the different local branch
+git branch -m <oldname> <newname>
+
+To rename the remote branch
+git push origin :<oldname> <newname>
+									DELETING BRANCH
+						
+Deleting local branch					
+git branch -d <my_private_branch_name>
+
+Deleting remote branch
+git push origin -d <my_private_branch_name>
+
+Deleting local branches that was deleted on remote
+git fetch --prune
+
+									DELETING FILE
+									
+Removing file from the repository (after pushing)
+git rm --cached <name_of_file>
+									
+									REVERT LOCAL CHANGES
+
+This will revert all local uncommitted changes (should be executed in repo root):
+git checkout .
+
+									RESETTING REMOTE TO A CERTAIN COMMIT
+git reset --hard <commit-hash>
+git push -f origin master
+
+									UNDO GIT-ADD BEFORE COMMIT
+git reset <file>
+
+									FIRST REWINDING HEAD TO REPLAY
+git fetch origin
+git reset --hard origin/<branch>
+
+									SHOW DIFFERENCES
+git difftool --tool=vimdiff
+
+									SHOW CHANGES TO BE COMMITTED:
+git status
+
+									SHOW LIST OF COMMITS WITHOUT SHOWING DIFFERENCES:
+git log -<count_of_commits>
+
+									SHOW LIST OF COMMITS WITH SHOWING DIFFERENCES:
+git log --stat
