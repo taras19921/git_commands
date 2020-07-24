@@ -114,3 +114,12 @@ git log -<count_of_commits>
 
 									SHOW LIST OF COMMITS WITH SHOWING DIFFERENCES:
 git log --stat
+
+									RECOVER DELETED (REMOTE) BRANCH:
+git reflog - find out coimmit id
+git branch need-recover-branch-name commitId - recover local branch you deleted by mistake
+git push origin need-recover-branch-name - push need-recover-branch-name again if you deleted remote branch too before
+
+									RECOVER A LOST COMMIT:
+git reflog - Find the commit
+git reset --hard <commitId>
